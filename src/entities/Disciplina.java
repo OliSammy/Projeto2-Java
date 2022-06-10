@@ -1,7 +1,10 @@
 package entities;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,10 +15,9 @@ public class Disciplina {
     private ArrayList<Aluno> turma;
     private String gabaritoOficial;
 
-    public Disciplina(String nomeDisciplina, int idDisciplina, String gararitoOficial) {
+    public Disciplina(String nomeDisciplina, int idDisciplina) {
         this.nomeDisciplina = nomeDisciplina;
         this.idDisciplina = idDisciplina;
-        this.gabaritoOficial = gabaritoOficial;
         turma = new ArrayList<Aluno>();
     }
 
@@ -24,15 +26,31 @@ public class Disciplina {
     }
 
     public File gerarRespostasTurma() throws IOException {
+        gerarNotas();
 
         File arquivo = new File("C:\\workspace\\JavaProjects\\Projeto-Arquivos-POO\\Arquivos", nomeDisciplina + ".txt");
         FileWriter escritor = new FileWriter(arquivo);
         BufferedWriter escritorBuff = new BufferedWriter(escritor);
         for (Aluno aluno : turma) {
-            escritorBuff.write(aluno.getRespostas() + "\t" + aluno.getNome() + "\n");
+            escritorBuff.write(aluno.getRespostas() + "\t" + aluno.getNome() + "\t" + aluno.getNota() + "\n");
         }
         escritorBuff.close();
         return arquivo;
+    }
+
+    public void receberGarabito(String caminho) throws FileNotFoundException, IOException {
+        File arquivo = new File(caminho);
+        FileReader leitor = new FileReader(arquivo);
+        BufferedReader leitorBuff = new BufferedReader(leitor);
+        gabaritoOficial = leitorBuff.readLine();
+        leitorBuff.close();
+    }
+
+    public void gerarNotas() {
+
+        for (Aluno aluno : turma) {
+            aluno.gerarNota(gabaritoOficial);
+        }
     }
 
     public String getNomeDisciplina() {
