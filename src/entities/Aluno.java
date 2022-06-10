@@ -1,10 +1,13 @@
 package entities;
 
-public class Aluno {
+public class Aluno implements Comparable<Aluno> {
     private String nome;
     private int matricula;
     private String respostas;
     private int nota;
+
+    public Aluno() {
+    }
 
     public Aluno(String nome, int matricula, String respostas) {
         this.nome = nome;
@@ -54,5 +57,10 @@ public class Aluno {
 
     public void setRespostas(String respostas) {
         this.respostas = respostas;
+    }
+
+    @Override
+    public int compareTo(Aluno outroAluno) {
+        return this.nome.compareTo(outroAluno.getNome());
     }
 }

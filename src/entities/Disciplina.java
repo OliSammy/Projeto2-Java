@@ -1,13 +1,8 @@
 package entities;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Disciplina {
     private String nomeDisciplina;
@@ -27,10 +22,13 @@ public class Disciplina {
 
     public File gerarRespostasTurma() throws IOException {
         gerarNotas();
-
-        File arquivo = new File("C:\\workspace\\JavaProjects\\Projeto-Arquivos-POO\\Arquivos", nomeDisciplina + ".txt");
+        File diretorio = new File("C:\\workspace\\JavaProjects\\Projeto-Arquivos-POO\\Arquivos\\");
+        diretorio.mkdir();
+        File disciplina = new File(diretorio, nomeDisciplina);
+        File arquivo = new File(disciplina.getAbsolutePath(), nomeDisciplina + ".txt");
         FileWriter escritor = new FileWriter(arquivo);
         BufferedWriter escritorBuff = new BufferedWriter(escritor);
+        Collections.sort(turma);
         for (Aluno aluno : turma) {
             escritorBuff.write(aluno.getRespostas() + "\t" + aluno.getNome() + "\t" + aluno.getNota() + "\n");
         }
@@ -44,6 +42,10 @@ public class Disciplina {
         BufferedReader leitorBuff = new BufferedReader(leitor);
         gabaritoOficial = leitorBuff.readLine();
         leitorBuff.close();
+    }
+
+    public void ordenarAlfabetica() {
+
     }
 
     public void gerarNotas() {

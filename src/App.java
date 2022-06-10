@@ -11,15 +11,15 @@ public class App {
         POO.adicionarAluno(b);
         POO.adicionarAluno(c);
 
-        POO.receberGarabito("C:\\workspace\\JavaProjects\\Projeto-Arquivos-POO\\Arquivos\\GabaritoPOO\\gabarito.txt");
+        POO.receberGarabito("C:\\workspace\\JavaProjects\\Projeto-Arquivos-POO\\Arquivos\\gabarito.txt");
         POO.gerarRespostasTurma();
-        /*
-         * try {
-         * POO.gerarRespostasTurma();
-         * } catch (Exception e) {
-         * System.out.println(e.getLocalizedMessage());
-         * System.out.println(e.getMessage());
-         * }
-         */
+
+        try {
+            POO.gerarRespostasTurma();
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+            System.out.println(e.getMessage());
+        }
+
     }
 }
