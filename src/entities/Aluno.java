@@ -16,6 +16,7 @@ public class Aluno implements Comparable<Aluno> {
     }
 
     public void gerarNota(String gabarito) {
+        nota = 0;
         if (respostas.equalsIgnoreCase("vvvvvvvvvv") || respostas.equalsIgnoreCase("ffffffffff"))
             nota = 0;
         else {
@@ -32,7 +33,7 @@ public class Aluno implements Comparable<Aluno> {
     }
 
     public void setNota(int nota) {
-        this.nota = nota;
+        this.nota *= nota;
     }
 
     public String getNome() {
