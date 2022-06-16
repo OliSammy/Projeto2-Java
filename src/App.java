@@ -13,9 +13,9 @@ public class App {
         String respostas;
         Disciplina disciplina;
         System.out.println(
-                "Selecione a opção que deseja realizar:\n1.Cadastrar novadisciplina\t2.Acessar disciplina\t3.Sair do programa.");
+                "\nSelecione a opção que deseja realizar:\n1.Cadastrar novadisciplina 2.Selecionar disciplina 3.Consultar disciplina 4.Sair do programa.");
         int op = lerNum.nextInt();
-        while (op != 3) {
+        while (op != 4) {
             switch (op) {
                 case 1:
                     System.out.println("\nDigite o nome da disciplina:");
@@ -27,7 +27,7 @@ public class App {
                     break;
                 case 2:
                     System.out.println("\nDigite o nome ou o id da disciplina que deseja selecionar.");
-                    nome = ler.next();
+                    nome = ler.nextLine();
                     try {
                         int temp = Integer.parseInt(nome);
                         disciplina = cadeiras.selecionarDisciplina(temp);
@@ -36,6 +36,7 @@ public class App {
                     }
                     if (disciplina == null) {
                         System.out.println("Disciplina inexistente.");
+                        break;
                     } else {
                         System.out.println("\nDisciplina " + disciplina.getNomeDisciplina() + " selecionada.");
                         System.out.println(
@@ -90,9 +91,6 @@ public class App {
 
                                     }
                                     break;
-                                case 4:
-                                    op2 = 4;
-                                    break;
                                 default:
                                     System.out.println("Opção inválida.");
                                     break;
@@ -103,14 +101,20 @@ public class App {
                         }
                     }
                 case 3:
-                    op = 3;
+                    System.out.println("Digite o nome da disciplina que deseja consultar os dados:");
+                    nome = ler.nextLine();
+                    try {
+                        cadeiras.acessarDisciplina(nome);
+                    } catch (Exception e) {
+                        System.out.println("Não há dados para essa disciplina");
+                    }
                     break;
                 default:
                     System.out.println("Opção inválida.");
                     break;
             }
             System.out.println(
-                    "\nSelecione a opção que deseja realizar:\n1.Cadastrar nova disciplina\t2.Acessar disciplina\t3.Sair do programa.");
+                    "\nSelecione a opção que deseja realizar:\n1.Cadastrar novadisciplina 2.Selecionar disciplina 3.Consultar disciplina 4.Sair do programa.");
             op = lerNum.nextInt();
         }
         ler.close();

@@ -3,7 +3,6 @@ package entities;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Properties;
 
 import domainexception.DisciplinaVaziaException;
 import domainexception.GabaritoInvalidoException;
@@ -89,7 +88,7 @@ public class Disciplina {
             arquivo = new File("C:\\Projeto2-Java\\Arquivos\\" + nomeDisciplina, nomeDisciplina + ".txt");
         } else {
             arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina,
-                    nomeDisciplina + ".txt");
+                    nomeDisciplina + "porNota.txt");
         }
         FileWriter escritor = new FileWriter(arquivo);
         BufferedWriter escritorBuff = new BufferedWriter(escritor);
