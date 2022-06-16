@@ -58,6 +58,33 @@ public class Cadeiras {
         }
     }
 
+    public void acessarDisciplina(String nomeDisciplina, String tipoDeOrdem) throws IOException {
+        if (tipoDeOrdem.equalsIgnoreCase("por nota")) {
+            tipoDeOrdem = "porNota";
+        }
+        File arquivo;
+        if (System.getProperty("os.name").equalsIgnoreCase("Windows 11") || System.getProperty("os.name")
+                .equalsIgnoreCase("Windows 10")) {
+            arquivo = new File("C:\\Projeto2-Java\\Arquivos\\" + nomeDisciplina, nomeDisciplina + ".txt");
+        } else {
+            arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina,
+                    nomeDisciplina + tipoDeOrdem + ".txt");
+        }
+        FileReader leitor = new FileReader(arquivo);
+        BufferedReader leitorBuff = new BufferedReader(leitor);
+        try {
+            String[] dados = leitorBuff.readLine().split("\t");
+            while (dados != null) {
+                System.out.println("Nome: " + dados[1] + " Nota: " + dados[2]);
+                dados = leitorBuff.readLine().split("\t");
+            }
+        } catch (Exception e) {
+
+        } finally {
+            leitorBuff.close();
+        }
+    }
+
     public ArrayList<Disciplina> getCadeiras() {
         return cadeiras;
     }

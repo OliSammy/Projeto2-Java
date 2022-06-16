@@ -103,8 +103,14 @@ public class App {
                 case 3:
                     System.out.println("Digite o nome da disciplina que deseja consultar os dados:");
                     nome = ler.nextLine();
+                    System.out.println("Digite como deseja ver os dados, em ordem alfabética ou por notas");
+                    String ordem = ler.nextLine();
                     try {
-                        cadeiras.acessarDisciplina(nome);
+                        if (ordem.equalsIgnoreCase("por nota")) {
+                            cadeiras.acessarDisciplina(nome, ordem);
+                        } else {
+                            cadeiras.acessarDisciplina(nome);
+                        }
                     } catch (Exception e) {
                         System.out.println("Não há dados para essa disciplina");
                     }
