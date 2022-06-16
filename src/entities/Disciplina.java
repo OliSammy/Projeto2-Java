@@ -17,8 +17,14 @@ public class Disciplina {
         this.nomeDisciplina = nomeDisciplina;
         this.idDisciplina = idDisciplina;
         turma = new ArrayList<Aluno>();
-        File pastaDisciplina = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/",
-                nomeDisciplina);
+        File pastaDisciplina;
+        try {
+            pastaDisciplina = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/",
+                    nomeDisciplina);
+        } catch (Exception e) {
+            pastaDisciplina = new File("C:\\Projeto2-Java\\Arquivos\\",
+                    nomeDisciplina);
+        }
         pastaDisciplina.mkdir();
     }
 
@@ -55,8 +61,14 @@ public class Disciplina {
     }
 
     public void ArquivoAlfa() throws IOException {
-        File arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina,
-                nomeDisciplina + ".txt");
+        File arquivo;
+        try {
+            arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina,
+                    nomeDisciplina + ".txt");
+        } catch (Exception e) {
+            arquivo = new File("C:\\Projeto2-Java\\Arquivos\\" + nomeDisciplina, nomeDisciplina + ".txt");
+        }
+
         FileWriter escritor = new FileWriter(arquivo);
         BufferedWriter escritorBuff = new BufferedWriter(escritor);
         ArrayList<Aluno> x = new ArrayList<Aluno>();
@@ -69,8 +81,13 @@ public class Disciplina {
     }
 
     public void ArquivoNota() throws IOException {
-        File arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina,
-                nomeDisciplina + "porNota.txt");
+        File arquivo;
+        try {
+            arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina,
+                    nomeDisciplina + "porNota.txt");
+        } catch (Exception e) {
+            arquivo = new File("C:\\Projeto2-Java\\Arquivos\\" + nomeDisciplina, nomeDisciplina + "porNota.txt");
+        }
         FileWriter escritor = new FileWriter(arquivo);
         BufferedWriter escritorBuff = new BufferedWriter(escritor);
         Aluno[] x = ordemPorNotas(turma);
@@ -102,8 +119,14 @@ public class Disciplina {
     }
 
     public void consultarNotas() throws FileNotFoundException, IOException, GabaritoInvalidoException {
-        File arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina + "/"
-                + nomeDisciplina + ".txt");
+        File arquivo;
+        try {
+            arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina + "/"
+                    + nomeDisciplina + ".txt");
+        } catch (Exception e) {
+            arquivo = new File("C:\\Projeto2-Java\\Arquivos\\" + nomeDisciplina + "\\"
+                    + nomeDisciplina + ".txt");
+        }
         FileReader leitor = new FileReader(arquivo);
         BufferedReader leitorBuff = new BufferedReader(leitor);
         try {
