@@ -90,6 +90,9 @@ public class App {
 
                                     }
                                     break;
+                                case 4:
+                                    op2 = 4;
+                                    break;
                                 default:
                                     System.out.println("Opção inválida.");
                                     break;
@@ -99,6 +102,9 @@ public class App {
                             op2 = lerNum.nextInt();
                         }
                     }
+                case 3:
+                    op = 3;
+                    break;
                 default:
                     System.out.println("Opção inválida.");
                     break;

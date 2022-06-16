@@ -3,6 +3,7 @@ package entities;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Properties;
 
 import domainexception.DisciplinaVaziaException;
 import domainexception.GabaritoInvalidoException;
@@ -18,11 +19,11 @@ public class Disciplina {
         this.idDisciplina = idDisciplina;
         turma = new ArrayList<Aluno>();
         File pastaDisciplina;
-        try {
-            pastaDisciplina = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/",
+        if (System.getProperty("os.name").equalsIgnoreCase("Windows 11")) {
+            pastaDisciplina = new File("C:\\Projeto2-Java\\Arquivos",
                     nomeDisciplina);
-        } catch (Exception e) {
-            pastaDisciplina = new File("C:\\Projeto2-Java\\Arquivos\\",
+        } else {
+            pastaDisciplina = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/",
                     nomeDisciplina);
         }
         pastaDisciplina.mkdir();
@@ -62,11 +63,12 @@ public class Disciplina {
 
     public void ArquivoAlfa() throws IOException {
         File arquivo;
-        try {
+        if (System.getProperty("os.name").equalsIgnoreCase("Windows 11") || System.getProperty("os.name")
+                .equalsIgnoreCase("Windows 10")) {
+            arquivo = new File("C:\\Projeto2-Java\\Arquivos\\" + nomeDisciplina, nomeDisciplina + ".txt");
+        } else {
             arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina,
                     nomeDisciplina + ".txt");
-        } catch (Exception e) {
-            arquivo = new File("C:\\Projeto2-Java\\Arquivos\\" + nomeDisciplina, nomeDisciplina + ".txt");
         }
 
         FileWriter escritor = new FileWriter(arquivo);
@@ -82,11 +84,12 @@ public class Disciplina {
 
     public void ArquivoNota() throws IOException {
         File arquivo;
-        try {
+        if (System.getProperty("os.name").equalsIgnoreCase("Windows 11") || System.getProperty("os.name")
+                .equalsIgnoreCase("Windows 10")) {
+            arquivo = new File("C:\\Projeto2-Java\\Arquivos\\" + nomeDisciplina, nomeDisciplina + ".txt");
+        } else {
             arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina,
-                    nomeDisciplina + "porNota.txt");
-        } catch (Exception e) {
-            arquivo = new File("C:\\Projeto2-Java\\Arquivos\\" + nomeDisciplina, nomeDisciplina + "porNota.txt");
+                    nomeDisciplina + ".txt");
         }
         FileWriter escritor = new FileWriter(arquivo);
         BufferedWriter escritorBuff = new BufferedWriter(escritor);
@@ -120,12 +123,12 @@ public class Disciplina {
 
     public void consultarNotas() throws FileNotFoundException, IOException, GabaritoInvalidoException {
         File arquivo;
-        try {
-            arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina + "/"
-                    + nomeDisciplina + ".txt");
-        } catch (Exception e) {
-            arquivo = new File("C:\\Projeto2-Java\\Arquivos\\" + nomeDisciplina + "\\"
-                    + nomeDisciplina + ".txt");
+        if (System.getProperty("os.name").equalsIgnoreCase("Windows 11") || System.getProperty("os.name")
+                .equalsIgnoreCase("Windows 10")) {
+            arquivo = new File("C:\\Projeto2-Java\\Arquivos\\" + nomeDisciplina, nomeDisciplina + ".txt");
+        } else {
+            arquivo = new File("/home/matheus/Programming/Projeto2-Java/Arquivos/" + nomeDisciplina,
+                    nomeDisciplina + ".txt");
         }
         FileReader leitor = new FileReader(arquivo);
         BufferedReader leitorBuff = new BufferedReader(leitor);
