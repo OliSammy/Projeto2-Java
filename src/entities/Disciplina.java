@@ -104,6 +104,7 @@ public class Disciplina {
         for (int i = 0; i < t.size(); i++) {
             teste[i] = t.get(i);
         }
+        Aluno temp = new Aluno();
         int maior;
         for (int i = 0; i < teste.length - 1; i++) {
             maior = i;
@@ -112,7 +113,6 @@ public class Disciplina {
                     maior = j;
                 }
             }
-            Aluno temp = new Aluno();
             temp = teste[maior];
             teste[maior] = teste[i];
             teste[i] = temp;

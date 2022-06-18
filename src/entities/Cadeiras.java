@@ -2,7 +2,6 @@ package entities;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,7 +58,7 @@ public class Cadeiras {
     }
 
     public void acessarDisciplina(String nomeDisciplina, String tipoDeOrdem) throws IOException {
-        if (tipoDeOrdem.equalsIgnoreCase("por nota")) {
+        if (tipoDeOrdem.equalsIgnoreCase("por nota") || tipoDeOrdem.equalsIgnoreCase("por notas")) {
             tipoDeOrdem = "porNota";
         }
         File arquivo;

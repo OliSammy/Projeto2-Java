@@ -91,14 +91,18 @@ public class App {
 
                                     }
                                     break;
+                                case 4:
+                                    break;
                                 default:
                                     System.out.println("Opção inválida.");
                                     break;
                             }
+
                             System.out.println(
                                     "\n1.Cadastrar Alunos e notas\t2.Gerar notas\t3.Consultar notas\t4.Sair do menu disciplina");
                             op2 = lerNum.nextInt();
                         }
+                        break;
                     }
                 case 3:
                     System.out.println("Digite o nome da disciplina que deseja consultar os dados:");
