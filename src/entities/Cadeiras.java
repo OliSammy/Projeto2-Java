@@ -58,7 +58,7 @@ public class Cadeiras {
     }
 
     public void acessarDisciplina(String nomeDisciplina, String tipoDeOrdem) throws IOException {
-        if (tipoDeOrdem.equalsIgnoreCase("por nota") || tipoDeOrdem.equalsIgnoreCase("por notas")) {
+        if (tipoDeOrdem.equalsIgnoreCase("pornota") || tipoDeOrdem.equalsIgnoreCase("pornotas")) {
             tipoDeOrdem = "porNota";
         }
         File arquivo;

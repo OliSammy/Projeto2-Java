@@ -5,9 +5,11 @@ import entities.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        //
         Scanner ler = new Scanner(System.in);
         Scanner lerNum = new Scanner(System.in);
         Cadeiras cadeiras = new Cadeiras();
+        //
         String nome;
         int id;
         String respostas;
@@ -18,8 +20,8 @@ public class App {
         while (op != 4) {
             switch (op) {
                 case 1:
-                    System.out.println("\nDigite o nome da disciplina:");
-                    nome = ler.nextLine();
+                    System.out.println("Digite o nome da disciplina:");
+                    nome = ler.next();
                     System.out.println("Digite a id que deseja associar a ela:");
                     id = lerNum.nextInt();
                     disciplina = new Disciplina(nome, id);
@@ -27,7 +29,7 @@ public class App {
                     break;
                 case 2:
                     System.out.println("\nDigite o nome ou o id da disciplina que deseja selecionar.");
-                    nome = ler.nextLine();
+                    nome = ler.next();
                     try {
                         int temp = Integer.parseInt(nome);
                         disciplina = cadeiras.selecionarDisciplina(temp);
@@ -49,9 +51,11 @@ public class App {
                                     int qtde = lerNum.nextInt();
                                     for (int i = 0; i < qtde; i++) {
                                         System.out.println(
-                                                "\nDigite o nome, a matricula e as respostas do aluno a ser cadastrado");
+                                                "\nDigite o nome do aluno:");
                                         nome = ler.next();
+                                        System.out.println("Digite a matricula desse aluno:");
                                         id = lerNum.nextInt();
+                                        System.out.println("Insira as respostas do aluno:");
                                         respostas = ler.next();
                                         Aluno aluno = new Aluno(nome, id, respostas);
                                         disciplina.adicionarAluno(aluno);
@@ -106,11 +110,11 @@ public class App {
                     }
                 case 3:
                     System.out.println("Digite o nome da disciplina que deseja consultar os dados:");
-                    nome = ler.nextLine();
+                    nome = ler.next();
                     System.out.println("Digite como deseja ver os dados, em ordem alfabética ou por notas");
-                    String ordem = ler.nextLine();
+                    String ordem = ler.next();
                     try {
-                        if (ordem.equalsIgnoreCase("por nota")) {
+                        if (ordem.equalsIgnoreCase("pornota")) {
                             cadeiras.acessarDisciplina(nome, ordem);
                         } else {
                             cadeiras.acessarDisciplina(nome);
